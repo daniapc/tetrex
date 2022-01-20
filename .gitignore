@@ -1,0 +1,2 @@
+#ignore documents with the .class suffix
+*.class
