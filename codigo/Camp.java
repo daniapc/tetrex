@@ -21,14 +21,15 @@ public class Camp {
     public boolean isOccupied(int x, int y)
     {
         //tests if it is on the bounderies of the camp.
-        if (isInBounderies(x, y))
+        if (!isInBounderies(x, y))
         {
-            System.out.printf("Error, x: %d and y: %d are out of bounderies of Camp\nline 25, Camp.java\n\n",x,y);
+            System.out.printf("\nError, x: %d and y: %d are out of bounderies of Camp\n",x,y);
             System.exit(1);
             return false;
         }
-        return ( camp[x][y] == 0 ? false : true);
+        return ( camp[y][x] == 0 ? false : true);
     }
+    //returns true if location is inside of Camp
     public boolean isInBounderies(int x, int y)
     {
         if(x<0 ||x>= width || y<0 || y>= height)
@@ -36,4 +37,39 @@ public class Camp {
         return true;
     }
 
+
+
+    private void TryToRemoveLine(int line)
+    {
+        boolean isFull = true;//flag to store if the statement: "line is full", is true
+        //tests if line is in the camp's bounderies
+        if(isInBounderies(0, line))
+        {
+            //tests if one of the spaces in one line is empty
+            for(char c : camp[line])
+            {
+               if (c==0)
+                    isFull = false;
+            }
+            //Removes a line if it is full
+            if(isFull)
+            {
+                //lowers every block by one in Camp, letting y=0 be the top and y= height-1 be the bottom of the camp
+                for(int y= line;y>0;y--)
+                {
+                    for(int x = 0; x<width;x++)
+                    {
+                        camp[y][x]=camp[y-1][x];
+                    }
+                }
+                //empty line 0;
+                for(int x =0;x<width;x++)
+                {
+                    camp[0][x]=0;
+                }
+            }
+        }
+        System.out.printf("\nError, line %d is out of bounderies of Camp.\n", line);
+        System.exit(1);
+    }
 }
