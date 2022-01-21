@@ -37,28 +37,53 @@ public class Camp {
         return true;
     }
 
-
-    //Try to remove line if it is filled and lower other lines when needed
-    private void TryToRemoveLine(int line)
+    private boolean IsLineFull(int line)
     {
-        boolean isFull = true;//flag to store if the statement: "line is full", is true
         //tests if line is in the camp's bounderies
-        if(isInBounderies(0, line))
+        if(line < height && line>=0)
         {
             //tests if one of the spaces in one line is empty
             for(char c : camp[line])
             {
                if (c==0)
                {
-                    isFull = false;
-                    break;
+                    return false;
                }
                     
             }
-            //Removes a line if it is full
-            if(isFull)
+            return true;
+        }
+        else
+        {
+        System.out.printf("\nError, line %d is out of bounderies of Camp.\n", line);
+        System.exit(1);
+        return false;
+        }
+    }
+
+    private void RemoveLine(int line)
+    {
+        if(line>=0 && line<height)
+        {
+            //empty line
+            for(int x =0;x<width;x++)
             {
-                //lowers every block by one in Camp, letting y=0 be the top and y= height-1 be the bottom of the camp
+                camp[line][x]=0;
+            }
+        }
+        else
+        {
+        System.out.printf("\nError, line %d is out of bounderies of Camp.\n", line);
+        System.exit(1);
+        }
+    }
+
+    //Lowers every block above line by one
+    private void LowerToLine(int line)
+    {
+        if(line < height && line>=0)
+        {
+                //lowers every block above line by one in Camp, letting y=0 be the top and y= height-1 be the bottom of the camp
                 for(int y= line;y>0;y--)
                 {
                     for(int x = 0; x<width;x++)
@@ -67,13 +92,13 @@ public class Camp {
                     }
                 }
                 //empty line 0;
-                for(int x =0;x<width;x++)
-                {
-                    camp[0][x]=0;
-                }
-            }
+                RemoveLine(0);
+
         }
+        else
+        {
         System.out.printf("\nError, line %d is out of bounderies of Camp.\n", line);
         System.exit(1);
+        }
     }
 }
