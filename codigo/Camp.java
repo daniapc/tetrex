@@ -38,7 +38,7 @@ public class Camp {
     }
 
 
-
+    //Try to remove line if it is filled and lower other lines when needed
     private void TryToRemoveLine(int line)
     {
         boolean isFull = true;//flag to store if the statement: "line is full", is true
@@ -49,7 +49,11 @@ public class Camp {
             for(char c : camp[line])
             {
                if (c==0)
+               {
                     isFull = false;
+                    break;
+               }
+                    
             }
             //Removes a line if it is full
             if(isFull)
