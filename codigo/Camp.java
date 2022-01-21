@@ -18,7 +18,7 @@ public class Camp {
         }
     }
     /*returns true if location on Camp is occupied, false if not */
-    public boolean isOccupied(int x, int y)
+    public boolean IsOccupied(int x, int y)
     {
         //tests if it is on the bounderies of the camp.
         if (!isInBounderies(x, y))
@@ -93,12 +93,23 @@ public class Camp {
                 }
                 //empty line 0;
                 RemoveLine(0);
-
         }
         else
         {
         System.out.printf("\nError, line %d is out of bounderies of Camp.\n", line);
         System.exit(1);
+        }
+    }
+
+    //updates and lower blocks when called
+    public void UpdateCamp()
+    {
+        for(int line=0;line<height;line++)
+        {
+            if(IsLineFull(line))
+            {
+                LowerToLine(line);
+            }
         }
     }
 }
