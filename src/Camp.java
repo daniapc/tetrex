@@ -30,7 +30,7 @@ public class Camp {
         }
         return ( camp[y][x] == 0 ? false : true);
     }
-    
+
     //returns true if location is inside of Camp
     public boolean IsInBounderies(int x, int y)
     {
