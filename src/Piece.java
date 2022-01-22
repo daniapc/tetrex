@@ -1,7 +1,6 @@
 public class Piece {
     private Coordinate position; //position of the piece
     private Format format; //format and color of the piece
-    private Camp camp; //Address to Camp Object
 
     public Piece(Coordinate position, Format format) {
         this.position = position;
@@ -13,8 +12,8 @@ public class Piece {
     {
         this.position = position;
     }
-    //tests if piece fits on said position
-    public boolean ValidPosition (Coordinate position, int[][] form)
+    //tests if format fits on said position inside camp
+    public boolean ValidPosition (Camp camp, Coordinate position, int[][] form)
     {
 
         int dim = format.GetDimension();

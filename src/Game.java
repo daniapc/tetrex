@@ -7,7 +7,6 @@ public class Game {
     
     private static final int WIDTH = 640;
     private static final int HEIGHT = 480;
-
     //private static GraphicManager graphicManager = new GraphicManager();
     
     public static void main (String[] args){

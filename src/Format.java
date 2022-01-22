@@ -1,7 +1,7 @@
 //class that stores information about the formats and rotations of a piece of Tetris
 public class Format {
     private int[][][] formats; //stores formats of every single rotation --> [rotationId][heightId][widthId]
-    private Coordinate middle;//midle of the format on a 2d matrix
+    private Coordinate middle;//middle of the format on a 2d matrix
     private int dimension, currentRotation=0, maxRotation; //dimension of the 2d square matrix, current rotationId and max Rotation Id
 
     public Format(int[][][] formats, Coordinate middle, int dimension,int maxRotation) {
@@ -24,8 +24,12 @@ public class Format {
     //Zero currentRotation
     public void ZeroRotation(){ currentRotation = 0; }
 
-    public void ChangeColor(char colorId)
+    // changes color of the format
+    public void ChangeColor(int colorId)
     {
+        if(colorId == 0)
+            return;
+        
         for(int i=0;i<maxRotation;i++)
         {
             for(int j=0;j<dimension;j++)
