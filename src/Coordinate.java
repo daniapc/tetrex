@@ -7,7 +7,7 @@ public class Coordinate {
         this.y= y;
     }
 
-    public Coordinate SumCoordinates(Coordinate coor1, Coordinate coor2)
+    public static Coordinate SumCoordinates(Coordinate coor1, Coordinate coor2)
     {
         return new Coordinate(coor1.x+coor2.x, coor1.y+coor2.y);
     }

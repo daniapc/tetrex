@@ -21,7 +21,7 @@ public class Piece {
     }
     public Coordinate GetPosition(){ return position; }
 
-    /*
+    
     //tests if it is possible to move to a certain area, then moves piece to there, returns true if succeeded
     public boolean TryMoveBy(Coordinate movementVector, Camp camp)
     {
@@ -32,7 +32,7 @@ public class Piece {
         }
         return false;
     }
-    */
+    
 
     //tests if it is possible to rotate in this position, then rotates if possible, returns true if succeeded
     public boolean TryRotation(Camp camp)

@@ -3,7 +3,7 @@ public class Level {
     private Piece piece; 
 
     // Movimentação das peças, sujeito a alterações
-    private int speed = 4;
+    private int speed = 1;
     private int positionX = 100, positionY = 100;
     
 
