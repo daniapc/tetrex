@@ -3,6 +3,7 @@ public class Format {
     private int[][][] formats; //stores formats of every single rotation --> [rotationId][heightId][widthId]
     private Coordinate middle;//middle of the format on a 2d matrix
     private int dimension, currentRotation=0, maxRotation; //dimension of the 2d square matrix, current rotationId and max Rotation Id
+    
 
     public Format(int[][][] formats, Coordinate middle, int dimension,int maxRotation) {
         this.formats = formats;
@@ -41,5 +42,67 @@ public class Format {
                 }
             }
         }
+    }
+    /** Stores the possible Formats of the game */
+    private static int possibleFormats = 7;
+    private static Format[] formatArray = {Cube(),Line(),T(),L(),Inverse_L(),S(),Z()};
+    //creates an instance of the cube format
+    private static Format Cube()
+    {
+        Coordinate mid = new Coordinate(0, 0);
+        int[][][] formats = {{{1,1},{1,1}}};
+        return new Format(formats, mid, 2, 1);
+    }
+    private static Format Line()
+    {
+        Coordinate mid = new Coordinate(1, 1);
+        int[][][] formats = {{{0,0,0,0},{1,1,1,1},{0,0,0,0},{0,0,0,0}},{{0,1,0,0},{0,1,0,0},{0,1,0,0},{0,1,0,0}}};
+        Format format = new Format(formats, mid, 4, 2);
+        format.ChangeColor(2);
+        return format;
+    }
+    private static Format T()
+    {
+        Coordinate mid = new Coordinate(1, 1);
+        int[][][] formats = {{{0,0,0},{1,1,1},{0,1,0}},{{0,1,0},{0,1,1},{0,1,0}},{{0,1,0},{1,1,1},{0,0,0}},{{0,1,0},{1,1,0},{0,1,0}}};
+        Format format = new Format(formats, mid, 3, 4);
+        format.ChangeColor(3);
+        return format;
+    }
+    private static Format L()
+    {
+        Coordinate mid = new Coordinate(1, 1);
+        int[][][] formats = {{{0,0,0},{1,1,1},{1,0,0}},{{0,1,0},{0,1,0},{0,1,1}},{{0,0,1},{1,1,1},{0,0,0}},{{1,1,0},{0,1,0},{0,1,0}}};
+        Format format = new Format(formats, mid, 3, 4);
+        format.ChangeColor(4);
+        return format;
+    }
+    private static Format Inverse_L()
+    {
+        Coordinate mid = new Coordinate(1, 1);
+        int[][][] formats = {{{0,0,0},{1,1,1},{0,0,1}},{{0,1,1},{0,1,0},{0,1,0}},{{1,0,0},{1,1,1},{0,0,0}},{{0,1,0},{0,1,0},{1,1,0}}};
+        Format format =new Format(formats, mid, 3, 4); 
+        format.ChangeColor(5);
+        return format;
+    }
+    private static Format S()
+    {
+        Coordinate mid = new Coordinate(1, 1);
+        int[][][] formats = {{{0,0,0},{0,1,1},{1,1,0}},{{0,1,0},{0,1,1},{0,0,1}},{{0,1,1},{1,1,0},{0,0,0}},{{1,0,0},{1,1,0},{0,1,0}}};
+        Format format = new Format(formats, mid, 3, 4);
+        format.ChangeColor(6);
+        return format;
+    }
+    private static Format Z()
+    {
+        Coordinate mid = new Coordinate(1, 1);
+        int[][][] formats = {{{0,0,0},{1,1,0},{0,1,1}},{{0,0,1},{0,1,1},{0,1,0}},{{1,1,0},{0,1,1},{0,0,0}},{{0,1,0},{1,1,0},{1,0,0}}};
+        Format format =new Format(formats, mid, 3, 4);
+        format.ChangeColor(7);
+        return format;
+    }
+    public static Format GetFormat(int randomNumber)
+    {
+        return formatArray[randomNumber%possibleFormats];
     }
 }
