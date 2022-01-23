@@ -6,8 +6,7 @@ public class KeyManager implements KeyListener{
     private boolean up, down, left, right;
 
     public void keyTyped (KeyEvent  event){
-
-
+        // Em algum momento será necessário para quando mexermos no menu
     }
 
     public void keyPressed (KeyEvent  event){
@@ -20,7 +19,7 @@ public class KeyManager implements KeyListener{
         if (code == KeyEvent.VK_A)
             left = true;
         if (code == KeyEvent.VK_D)
-            up = true;
+            right = true;
 
     }
 

@@ -26,15 +26,18 @@ public class GraphicManager {
 
         window.add(gamePanel);
     }
-     public static char getKey(){
-        
+
+    // 0 = up, 1 = down, 2 = right, 3 = left
+    public static void keysPressed(boolean[] keys){
+        gamePanel.keysPressed(keys);
     }
-  /* Cal sls the game panel to start the loop */
+
+    /* Calls the game panel to start running the thread */
     public static void startLoop(){
         gamePanel.run();
     }
 
-    public static void draw(){
-
+    public static void updatePositions(int posX, int posY){
+        gamePanel.setPositions(posX, posY);
     }
 }
