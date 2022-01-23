@@ -7,28 +7,38 @@ public class Piece {
         this.format = format;
         this.format.ZeroRotation();
     }
+    
     // moves piece to postion, without testing it
     public void MoveTo(Coordinate position)
     {
         this.position = position;
     }
-    //tests if format fits on said position inside camp
-    public boolean ValidPosition (Camp camp, Coordinate position, int[][] form)
-    {
+    public Format GetFormat(){ return format; }
+    //sets new format and zero its current rotation
+    public void SetFormat(Format format){
+        this.format = format;
+        this.format.ZeroRotation();
+    }
+    public Coordinate GetPosition(){ return position; }
 
-        int dim = format.GetDimension();
-        Coordinate mid = format.GetMiddle();
-        for(int i = 0; i<dim;i++)
+    //tests if it is possible to move to a certain area, then moves piece to there, returns true if succeeded
+    public boolean TryMoveBy(Coordinate movementVector, Camp camp)
+    {
+        if(camp.ValidPosition(this, Coordinate.SumCoordinates(position, movementVector), 0))
         {
-            for(int j =0; j<dim;j++)
-            {
-               if(form[i][j]!=0 && (!camp.IsInBounderies(j-mid.x+position.x, i-mid.y+position.y)
-                || camp.IsOccupied(j-mid.x+position.x, i-mid.y+position.y)))
-               {
-                    return false;
-               }
-            }
+            MoveTo(Coordinate.SumCoordinates(position, movementVector));
+            return true;
         }
-        return true;
+        return false;
+    }
+    //tests if it is possible to rotate in this position, then rotates if possible, returns true if succeeded
+    public boolean TryRotation(Camp camp)
+    {
+        if(camp.ValidPosition(this, position, 1))
+        {
+            format.IncrementRotation();
+            return true;
+        }
+        return false;
     }
 }

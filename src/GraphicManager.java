@@ -26,9 +26,15 @@ public class GraphicManager {
 
         window.add(gamePanel);
     }
-
-    /* Calls the game panel to start the loop */
+     public static char getKey(){
+        
+    }
+  /* Cal sls the game panel to start the loop */
     public static void startLoop(){
-        gamePanel.gameLoop();
+        gamePanel.run();
+    }
+
+    public static void draw(){
+
     }
 }

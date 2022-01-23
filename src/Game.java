@@ -8,6 +8,7 @@ public class Game {
     private static final int WIDTH = 640;
     private static final int HEIGHT = 480;
     //private static GraphicManager graphicManager = new GraphicManager();
+    private Level level;
     
     public static void main (String[] args){
         
@@ -16,8 +17,11 @@ public class Game {
         GraphicManager.startLoop();
 
         //JFrame window = new JFrame();
-    
 
+    }
+
+    public static void update (){
+        
 
 
     }

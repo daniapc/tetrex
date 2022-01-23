@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.geom.*;
 import javax.swing.*;
 
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel implements Runnable{
     
     private int width;
     private int height;
@@ -11,15 +11,26 @@ public class GamePanel extends JPanel {
 
     Thread gameThread;
 
+    private KeyManager keyListener = new KeyManager();
+
     public GamePanel(int w, int h){
         width = w;
         height = h;
         this.setPreferredSize(new Dimension (width, height));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
+
+        this.addKeyListener(keyListener);
+        this.setFocusable(true);
+
+        gameThread = new Thread(this);
+        gameThread.start();
     }
 
-    public void gameLoop (){
+    public static char keyPressed (){
+          }
+
+    public void run (){
         
         double drawInterval = 1000000000/fps;
         double deltaTime = 0;
@@ -35,13 +46,16 @@ public class GamePanel extends JPanel {
             lastTime = currentTime;
 
             if (deltaTime >= 1){
-                //update();
+                
+                Game.update();
 
                 //draw();
                 deltaTime--;
             }
         }
     }
+
+
 
     protected void paintComponent(Graphics g){
         
