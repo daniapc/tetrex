@@ -1,2 +1,2 @@
 # tetrex
-Desenvolvimento do clássico jogo "Tetris" na linguagem Java. aaaaaa
+Desenvolvimento do clássico jogo "Tetris" na linguagem Java.
